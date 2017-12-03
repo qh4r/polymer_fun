@@ -1,0 +1,61 @@
+<!-- CREATED do not have access to local dom - rest does -->
+<dom-module id="lifecycle-showcase">
+  <template>
+    <p>showcese of lifecycle hooks</p>
+    <p>changes: <input type="text" value="{{progress::keyup}}"></p>
+    <button id="btn">Dispose</button>
+  </template>
+  <script type="text/javascript">
+    Polymer({
+    is: "lifecycle-showcase",
+    // NEED THIS to make attributeChanged WORK!!!!!!!!
+    // https://www.polymer-project.org/2.0/docs/devguide/properties
+    properties: {
+      progress: {
+        type: String,
+        notify: true, //this makes attributeCHanged work
+        value: 'test',
+        // reflectToAttribute: true, // sets value on host node
+    },
+    // progress: "test", // initial value , works but not aware of it
+    created: function() {
+      // maps to web components
+      this.log('created');
+
+      // IN HERE we only have acces to element itself without it's content - it's not rdy yet
+    },
+    ready: function() {
+      // specyfic to polymer
+      this.log('rdy');
+
+      // in here we have access to local dom
+      this.$.btn.addEventListener('click', function() {
+        this.remove();
+      }.bind(this));
+    },
+    attached: function() {
+      // maps to web components
+      // happens after ready on mount
+      this.log('attached');
+    },
+    detached: function() {
+      // maps to web components
+      this.log('detched');
+      // no need to remove listeners from inner elements - will be removed anyway
+
+      // can use this to remove intervals, timeouts etc
+    },
+    attributeChanged: function(name, oldValue, newValue) {
+      console.log("%s changed from %s to %s", name, oldValue, newValue) // %s ~ string
+    },
+    updateAttribute: function(progress) {
+      this.setAttribute('progress', progress);
+    },
+    log: function(text) {
+      console.log(`---> * ${text} * <----`, this.$); // you access dom elements using this.$
+      // ONLY ELEMENTS WITH ID WILL SHOW UP ON this.$
+      this.updateAttribute(text);
+    },
+  });
+  </script>
+</dom-module>

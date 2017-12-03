@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Polymer start</title>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html"/>
+  <link rel="import" href="hello-world.html" />
+  <link rel="import" href="two-way.html" />
+  <link rel="import" href="lifecycle-showcase.html" />
+</head>
+<body>
+  <p>
+    <!-- for some reason initialization is not working  -->
+    <hello-world name="Asia"></hello-world>
+  </p>
+  <p>
+    <input type="text" id="nameinput">
+    <hello-world name="test" id="namedisplay"></hello-world>
+  </p>
+  <p>
+    <two-way name="test" ></two-way>
+  </p>
+  <lifecycle-showcase></lifecycle-showcase>
+  <script type="text/javascript">
+    nameinput.value=namedisplay.name; // initialization
+    nameinput.addEventListener('keyup', function(e) {
+      namedisplay.name = e.target.value;
+    })
+  </script>
+</body>
+</html>

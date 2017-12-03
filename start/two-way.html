@@ -1,0 +1,12 @@
+<!--  {{ }} - two way binding -->
+<dom-module id="two-way">
+  <template>
+    input -> <input type="text" value="{{name::keyup}}">
+    <h1>Input val: [[name]]</h1>
+  </template>
+  <script>
+    Polymer({
+      is: "two-way"
+    })
+  </script>
+</dom-module>

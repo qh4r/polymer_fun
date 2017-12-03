@@ -1,0 +1,21 @@
+<!--
+  standard Polymer module format
+  id must match id that will be used to create tag
+  [[]] - is one way data binding (incoming)
+ -->
+<dom-module id="hello-world">
+  <template is="dom-bind">
+    <h1>Say hi! [[name]]</h1>
+  </template>
+  <script>
+    Polymer({
+      is: "hello-world",
+      // need this to bind values from dom attributes
+      properties: {
+        name: {
+          type: String,
+        }
+      },
+    })
+  </script>
+</dom-module>
