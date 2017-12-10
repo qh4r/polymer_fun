@@ -1,0 +1,21 @@
+<!-- content renders children passed to element  -->
+<!-- not supported anymoree -->
+<dom-module id="custom-button">
+  <template>
+    TEST
+    <content></content>
+  </template>
+  <script>
+  Polymer({
+     is: "custom-button",
+     extends: 'button',
+     created: function() {
+       this.style.color = 'red';
+       this.addEventListener('click', this.clickHandler)
+     },
+     clickHandler: function(){
+       this.textContent = this.textContent.split('').reverse().join('')
+     }
+   })
+  </script>
+</dom-module>

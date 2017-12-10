@@ -10,11 +10,13 @@
   <link rel="import" href="hello-world.html" />
   <link rel="import" href="two-way.html" />
   <link rel="import" href="lifecycle-showcase.html" />
+  <link rel="import" href="my-card.html" />
+  <link rel="import" href="custom-button.html" />
 </head>
 <body>
   <p>
     <!-- for some reason initialization is not working  -->
-    <hello-world name="Asia"></hello-world>
+    <hello-world name="ASD"></hello-world>
   </p>
   <p>
     <input type="text" id="nameinput">
@@ -24,6 +26,10 @@
     <two-way name="test" ></two-way>
   </p>
   <lifecycle-showcase></lifecycle-showcase>
+  <my-card></my-card>
+  <custom-button>
+    TEST
+  </custom-button>
   <script type="text/javascript">
     nameinput.value=namedisplay.name; // initialization
     nameinput.addEventListener('keyup', function(e) {
